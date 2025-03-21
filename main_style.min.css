@@ -1,0 +1,1 @@
+*{margin:0;padding:0}body{background-color:#ffc}#container_main_aside{display:flex}header,footer{background-color:#000;height:50px;line-height:50px;margin-bottom:20px}header.footer,footer.footer{margin-bottom:0}main{width:50%;height:100vh;margin-left:5%;border:1px solid silver;flex:1}aside{border:1px solid silver;width:200px}
