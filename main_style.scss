@@ -1,9 +1,11 @@
 /*---------------------------------VARIABLES---------------------------------*/
-:root {
-    $back-color: #FFFFCC;
-}
+// light theme
+$back-color-light: #FFFFCC;
+$text-color-light: #333333;
 
-
+// dark theme
+$back-color-dark: #FFFFCC;
+$text-color-dark: #ffffff;
 /*---------------------------------END VARIABLES---------------------------------*/
 
 /*---------------------------------TECHNICAL---------------------------------*/
@@ -12,8 +14,22 @@
     padding: 0;
 }
 
+// миксин для переключения темной темы
+@mixin theme_toggle($back_gr, $text_color) {
+    background-color: $back_gr;
+    color: $text_color;
+}
+
+// боди со светлой темой
 body {
-    background-color: $back-color;
+    @include theme_toggle($back-color-light, $text-color-light);
+    transition: background 0.3s, color 0.3s;
+}
+
+// боди с темной темой
+body.dark_theme {
+    @include theme_toggle($back-color-dark, $text-color-dark);
+    transition: background 0.3s, color 0.3s;
 }
 
 // контейнер с мэин и эсайд
@@ -23,12 +39,20 @@ body {
 /*---------------------------------END TECHNICAL---------------------------------*/
 
 /*---------------------------------HEADER---------------------------------*/
-// стили для хидер и футер
+// стили для хидер
 header{
     background-color: rgb(0, 0, 0);
+    width: 100%;
     height: 50px;
-    line-height: 50px;
+    // line-height: 50px;
     margin-bottom: 20px;
+
+    // логотип
+    #main_logo {
+        $base_width_main_logo: 100px;
+        // рассчет ширины лого
+        width: calc(#{$base_width_main_logo} + (100vw - 320px) / 10);
+    }
 }
 /*---------------------------------END HEADER---------------------------------*/
 
@@ -55,9 +79,10 @@ aside{
 
 /*---------------------------------FOOTER---------------------------------*/
 footer {
-    background-color: rgb(0, 0, 0);
+    background-color: rgba($color: #000000, $alpha: 1.0);
     height: 50px;
-    line-height: 50px;
+    width: 100%;
+    // line-height: 50px;
     margin-top: 20px;
 }
 /*---------------------------------END FOOTER---------------------------------*/
